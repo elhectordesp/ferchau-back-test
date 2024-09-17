@@ -25,12 +25,12 @@ public class MunicipalityServiceImpl implements MunicipalityService {
     Predicate<Municipality> byName = municipality -> municipality.getNombre().toLowerCase().contains(name.toLowerCase());
     
     List<Municipality> municipalities = aemetClient.getAllMunicipalities().stream()
-        .map(MunicipalityMapper::toEntity) // Convertir DTO a entidad
+        .map(MunicipalityMapper::toEntity)
         .filter(byName)
         .collect(Collectors.toList());
 
     return municipalities.stream()
-        .map(MunicipalityResponseMapper::toResponseDTO) // Convertir entidad a ResponseDTO
+        .map(MunicipalityResponseMapper::toResponseDTO)
         .collect(Collectors.toList());
   }
 
